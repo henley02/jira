@@ -14,6 +14,7 @@ const AuthenticatedApp = () => {
                 <HeaderLeft gap>
                     <SoftwareLogo width={'1.8rem'} color={'rgb(38,132,255)'}/>
                     <h3>项目</h3>
+
                     <h3>用户</h3></HeaderLeft><HeaderRight><Dropdown overlay={<Menu><Menu.Item key={'logout'}><Button onClick={logout} type={"link"}>登出</Button>
                             </Menu.Item>
                         </Menu>
