@@ -31,8 +31,8 @@ const SearchList: FC<ISearchListProps> = (props) => {
                 render(value, project) {
                     return (
                         <span>
-                    {users.find(user => user.id === project.personId)?.name || '为止'}
-                </span>
+                            {users.find(user => user.id === project.personId)?.name || '未知'}
+                        </span>
                     )
                 }
             },
@@ -41,8 +41,8 @@ const SearchList: FC<ISearchListProps> = (props) => {
                 render(value, project) {
                     return (
                         <span>
-                    {project.created ? dayjs(project.created).format('YYYY-MM-DD') : '无'}
-                </span>
+                            {project.created ? dayjs(project.created).format('YYYY-MM-DD') : '无'}
+                        </span>
                     )
                 }
             },

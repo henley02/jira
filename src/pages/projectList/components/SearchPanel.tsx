@@ -1,3 +1,5 @@
+/* @jsxImportSource @emotion/react */
+
 import {ChangeEvent, FC} from 'react';
 import {Form, Input, Select} from "antd";
 
@@ -19,19 +21,20 @@ interface ISearchPanelProps {
     setParam: (param: ISearchPanelProps['param']) => void
 }
 
+const Item = Form.Item;
 const SearchPanel: FC<ISearchPanelProps> = (props) => {
     const {users, param, setParam} = props
     return (
-        <Form layout='inline'>
-            <Form.Item>
+        <Form layout='inline' css={{marginBottom: '.2rem'}}>
+            <Item>
                 <Input
                     placeholder="项目名"
                     type='text'
                     value={param.name}
                     onChange={(event: ChangeEvent<HTMLInputElement>) => setParam({...param, name: event.target.value})}
                 />
-            </Form.Item>
-            <Form.Item>
+            </Item>
+            <Item>
                 <Select
                     value={param.personId}
                     onChange={(value) => {
@@ -47,7 +50,7 @@ const SearchPanel: FC<ISearchPanelProps> = (props) => {
                         ))
                     }
                 </Select>
-            </Form.Item>
+            </Item>
         </Form>
     )
 

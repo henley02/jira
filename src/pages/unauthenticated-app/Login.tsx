@@ -1,30 +1,31 @@
-import {FormEvent} from "react";
 import {useAuth} from "../../context/auth_context";
+import { Form, Input} from "antd";
+import {IAuthParams} from "../../api/auth_provider";
+import {LongButton} from "./index";
 
 const Login = () => {
     const {login, user} = useAuth();
 
-    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const username = (e.currentTarget.elements[0] as HTMLInputElement).value;
-        const password = (e.currentTarget.elements[1] as HTMLInputElement).value;
-        login({username, password});
+    const onSubmit = (values: IAuthParams) => {
+        console.log(values);
+        login(values);
     }
-
+    const Item = Form.Item;
     return (
-        <form onSubmit={onSubmit}>
+        <Form onFinish={onSubmit} name="basic" style={{marginTop: '20px'}}>
             {user ? <div>登录成功，用户名{user?.name},token:{user.token}</div> : null}
-            <div>
-                <label htmlFor='username'>用户名</label>
-                <input type='text' id='username'/>
-            </div>
-            <div>
-                <label htmlFor='password'>密码</label>
-                <input type='password' id='password'/>
-            </div>
-            <button type={"submit"}>登录</button>
-        </form>
+            <Item name="username" rules={[{required: true, message: '请输入用户名'}]}>
+                <Input id='username' placeholder={'请输入用户名'}/>
+            </Item>
+            <Item name="password" rules={[{required: true, message: '请输入密码'}]}>
+                <Input.Password id='password' placeholder={'请输入密码'}/>
+            </Item>
+            <Item>
+                <LongButton type='primary' htmlType="submit">登录</LongButton>
+            </Item>
+        </Form>
     );
 }
+
 
 export default Login

@@ -12,15 +12,24 @@ export function isPlainObject(obj: any): boolean {
 
 export const isFalsy = (value: unknown) => (value === 0 ? false : !value);
 
+export const isVoid = (value: unknown) => value === undefined || value === null || value === ''
+
 export const cleanObject = (object: { [key: string]: unknown }) => {
     const temp = {...object};
     Object.keys(temp).forEach(key => {
         const value = temp[key];
-        if (isFalsy(value)) {
+        if (isVoid(value)) {
             delete temp[key]
         }
     })
     return temp;
+}
+
+export const useMount = (callback: () => void) => {
+    useEffect(() => {
+        callback()
+        // eslint-disable-next-line
+    }, [])
 }
 
 export const useDebounce = <T>(value: T, delay: number) => {

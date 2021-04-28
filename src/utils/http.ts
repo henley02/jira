@@ -1,7 +1,6 @@
 import qs from 'qs';
 import {apiUrl, logout} from "../api/auth_provider";
 import {useAuth} from "../context/auth_context";
-import * as Http from "http";
 
 interface IConfig extends RequestInit {
     data?: object
