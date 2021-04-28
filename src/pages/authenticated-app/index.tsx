@@ -9,6 +9,7 @@ const AuthenticatedApp = () => {
     const {logout, user} = useAuth();
     return (
         <Container>
+
             <Header between>
                 <HeaderLeft gap>
                     <SoftwareLogo width={'1.8rem'} color={'rgb(38,132,255)'}/>

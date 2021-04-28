@@ -33,7 +33,8 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -58,6 +59,8 @@
     "workerDirectory": "public"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
     "husky": ">=6",
     "lint-staged": ">=10",
     "prettier": "2.2.1"
